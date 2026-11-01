@@ -1,0 +1,7 @@
+.git
+artifacts
+**/node_modules
+**/dist
+**/__pycache__
+*.kubeconfig
+.env*

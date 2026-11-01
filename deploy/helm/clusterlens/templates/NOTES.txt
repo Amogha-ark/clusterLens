@@ -1,0 +1,5 @@
+ClusterLens is available through a local port forward:
+
+kubectl --kubeconfig artifacts/clusterlens.kubeconfig --context k3d-clusterlens -n {{ .Release.Namespace }} port-forward service/{{ .Release.Name }} 8080:8080 --address=127.0.0.1
+
+Open http://127.0.0.1:8080. History is volatile and log queries use the pod log API.

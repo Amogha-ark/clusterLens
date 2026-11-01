@@ -1,0 +1,6 @@
+apiVersion: v2
+name: clusterlens
+description: A local, read-only Kubernetes observability workspace
+version: 0.1.0
+appVersion: "0.1.0"
+type: application

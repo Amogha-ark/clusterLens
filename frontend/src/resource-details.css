@@ -1,0 +1,85 @@
+/* One reading surface and one scroll area, with room for both evidence and prose. */
+.drawer-dialog {
+  inset: 0;
+  margin: auto;
+  width: min(1080px, calc(100vw - 64px));
+  max-width: calc(100vw - 64px);
+  height: min(920px, calc(100dvh - 64px));
+  max-height: calc(100dvh - 64px);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  box-shadow: 0 28px 100px #0006;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.drawer { display: block; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; animation: resource-appear 160ms ease-out; }
+.drawer-header { position: sticky; top: 0; z-index: 4; min-height: 64px; padding: 12px 32px; background: var(--panel); border-bottom: 1px solid var(--line); }
+.drawer-header .eyebrow { font-size: 13px; letter-spacing: .08em; }
+.drawer-header .icon-button { width: 40px; height: 40px; border-radius: 12px; }
+.drawer-heading { padding: 24px 32px 12px; }
+.drawer-heading h2 { font-size: clamp(24px, 2.5vw, 32px); letter-spacing: -.035em; line-height: 1.3; }
+.drawer-heading p { font-size: 15px; }
+.drawer-status { padding: 0 32px 20px; font-size: 14px; flex-wrap: wrap; gap: 16px; }
+.drawer-status .badge { font-size: 13px; }
+.drawer .tabs { position: sticky; top: 64px; z-index: 3; padding: 0 32px; background: var(--panel); gap: 28px; overflow-x: auto; }
+.drawer .tabs > button { font-size: 16px; min-height: 52px; padding: 12px 0; flex-shrink: 0; }
+.drawer-content { padding: 24px 32px 32px; overflow: visible; }
+.drawer-content > .investigation-context { margin-bottom: 24px; padding: 16px 20px; border: 1px solid var(--line); border-radius: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
+.drawer .investigation-bar, .drawer .investigation-pivot { margin: 0; }
+.drawer .investigation-bar > span { display: none; }
+.drawer .investigation-bar label, .drawer .investigation-pivot { font-size: 14px; justify-content: flex-start; }
+.drawer .investigation-bar select, .drawer .investigation-pivot select { font-size: 14px; padding: 9px 12px; min-height: 42px; }
+.drawer .investigation-pivot { grid-column: 2; grid-row: 1; }
+.drawer .investigation-pivot select { max-width: 100%; }
+.drawer .investigation-trail { padding: 0; grid-column: 1 / -1; }
+.drawer .investigation-trail button { max-width: 260px; font-size: 14px; padding: 7px 10px; }
+.drawer .investigation-trail small, .drawer .investigation-scope { font-size: 13px; }
+.drawer .investigation-scope { grid-column: 1 / -1; margin: 0; }
+.drawer .investigation-scope button { font-size: 14px; }
+.drawer .investigation-scope > span:first-child:not(:only-child) { display: none; }
+.drawer .investigation-next { padding: 24px; }
+.drawer .investigation-next h3 { font-size: 18px; }
+.drawer .investigation-next > p, .drawer .relationship-group > p { font-size: 15px; }
+.drawer .investigation-next strong { font-size: 16px; }
+.drawer .investigation-next small { font-size: 14px; }
+.drawer .investigation-signals button { font-size: 14px; min-height: 42px; }
+.drawer .metadata dt, .drawer .metadata dd { font-size: 15px; line-height: 1.6; overflow-wrap: anywhere; }
+.drawer .section-label { font-size: 13px; }
+.drawer .detail-metrics > div > span { font-size: 15px; }
+.drawer .detail-metrics small { font-size: 13px; }
+.drawer .detail-metrics strong { font-size: 32px; }
+.drawer .related-list button, .drawer .container-budget, .drawer .evidence-origin { font-size: 14px; }
+.drawer .labels > code, .drawer .container-card > code { font-size: 13px; }
+.drawer-footer { font-size: 13px; padding: 16px 32px; }
+@keyframes resource-appear { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 760px) {
+  .drawer-dialog { width: calc(100vw - 24px); max-width: calc(100vw - 24px); height: calc(100dvh - 24px); max-height: calc(100dvh - 24px); border-radius: 22px; }
+  .drawer-content { padding: 20px; }
+  .drawer-header { padding: 12px 20px; }
+  .drawer-heading { padding: 20px 20px 12px; }
+  .drawer-status { padding: 0 20px 16px; }
+  .drawer .tabs { padding: 0 20px; gap: 22px; }
+  .drawer-content > .investigation-context { display: flex; flex-direction: column; align-items: stretch; padding: 14px; }
+  .drawer .investigation-bar label, .drawer .investigation-pivot { justify-content: space-between; }
+  .drawer .investigation-pivot select { max-width: 65%; }
+  .drawer .investigation-scope { flex-wrap: wrap; }
+  .drawer .metadata > div { grid-template-columns: 1fr; gap: 4px; }
+  .drawer-footer { padding: 16px 20px; }
+}
+@media (max-height: 540px) {
+  .drawer-dialog { height: calc(100dvh - 16px); max-height: calc(100dvh - 16px); }
+  .drawer-header { position: static; }
+  .drawer .tabs { top: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .drawer { animation: none; } }
+.resource-window-actions { display: flex; align-items: center; gap: 14px; }
+.resource-window-actions a { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; font-size: 14px; text-decoration: none; }
+@media (max-width: 540px) {
+  .drawer-header .eyebrow { font-size: 11px; letter-spacing: .02em; }
+  .resource-window-actions { gap: 8px; }
+  .resource-window-actions a { font-size: 13px; padding: 8px; }
+}
+@media (max-width: 540px) {
+  .drawer-header .eyebrow { display: none; }
+  .drawer-header { justify-content: flex-end; }
+}

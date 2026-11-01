@@ -1,0 +1,110 @@
+.ai-explanation { border: 1px solid var(--border, #414843); border-radius: 22px; padding: 22px; margin-bottom: 24px; }
+.ai-heading { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.ai-heading h3 { margin: 0; font-size: 1rem; }
+.ai-explanation p { line-height: 1.6; }
+.ai-label, .ai-provider { font-size: .8rem; opacity: .75; }
+.ai-explanation button { border: 1px solid var(--border, #626c63); border-radius: 12px; padding: 9px 13px; background: transparent; color: inherit; cursor: pointer; }
+.ai-explanation button:disabled { opacity: .5; cursor: default; }
+.ai-explanation button:focus-visible, .ai-explanation summary:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.ai-consent { display: flex; align-items: flex-start; gap: 10px; margin: 16px 0; line-height: 1.5; font-size: .88rem; }
+.ai-consent input { margin-top: 5px; }
+.ai-actions, .ai-citations { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.ai-explanation pre { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 280px; overflow: auto; font-size: .75rem; line-height: 1.6; }
+.ai-explanation details { margin: 14px 0; }
+.ai-explanation summary { cursor: pointer; }
+.ai-explanation li { margin-bottom: 14px; line-height: 1.6; }
+.ai-explanation li p { margin-bottom: 6px; }
+.ai-citations button { padding: 3px 9px; font-size: .75rem; }
+.ai-evidence { border-top: 1px solid var(--border, #414843); margin-top: 18px; padding-top: 12px; }
+
+/* An indeterminate connection, rather than a simulated percentage or model stage. */
+.ai-waiting {
+  margin-top: 20px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--green-dim), transparent 80%);
+}
+.ai-waiting-top { display: flex; align-items: center; gap: 18px; }
+.ai-waiting-title { flex: 1; min-width: 0; }
+.ai-waiting-title h4 { margin: 6px 0 0; font-size: 1.08rem; line-height: 1.4; overflow-wrap: anywhere; }
+.ai-waiting-title .ai-label { font-size: .74rem; }
+.ai-waiting-orbit { position: relative; width: 48px; height: 48px; flex-shrink: 0; display: grid; place-items: center; color: var(--green); border: 1px solid var(--line); border-radius: 16px; }
+.ai-waiting-orbit i { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: currentColor; animation: ai-breathe 3s ease-in-out infinite; }
+.ai-waiting-orbit i:nth-of-type(1) { top: -3px; left: 15px; }
+.ai-waiting-orbit i:nth-of-type(2) { right: -3px; top: 26px; animation-delay: .6s; }
+.ai-waiting-orbit i:nth-of-type(3) { bottom: -3px; left: 9px; animation-delay: 1.2s; }
+.ai-elapsed { display: inline-flex; align-items: center; gap: 5px; font-size: .78rem; font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--muted); }
+.ai-waiting .ai-waiting-message { font-size: .9rem; min-height: 3.2em; margin: 20px 0 12px; }
+.ai-waiting-connection { display: flex; align-items: center; gap: 12px; font-size: .75rem; color: var(--muted); flex-wrap: wrap; }
+.ai-waiting-connection > span:not(.ai-connection-line) { display: inline-flex; align-items: center; gap: 6px; }
+.ai-waiting-connection svg { color: var(--green); }
+.ai-connection-line { flex: 1; height: 1px; background: var(--line); min-width: 20px; }
+.ai-pending-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: ai-breathe 3s ease-in-out infinite; }
+.ai-waiting-evidence { border-top: 1px solid var(--line); padding-top: 16px; font-size: .82rem; }
+.ai-waiting-evidence p { color: var(--muted); }
+.ai-waiting-evidence ul { list-style: none; padding: 0; }
+.ai-waiting-evidence li { display: flex; gap: 10px; overflow-wrap: anywhere; }
+.ai-waiting-evidence li span { color: var(--muted); font-size: .72rem; font-variant-numeric: tabular-nums; }
+.ai-waiting-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid var(--line); padding-top: 16px; margin-top: 16px; font-size: .75rem; }
+.ai-waiting-footer > span { overflow-wrap: anywhere; min-width: 0; color: var(--muted); }
+.ai-waiting-footer small { display: block; margin-top: 5px; font-size: inherit; }
+.ai-waiting-footer button { flex-shrink: 0; }
+@keyframes ai-breathe { 0%, 100% { opacity: .4; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .ai-waiting-orbit i, .ai-pending-dot { animation: none; }
+}
+@media (max-width: 540px) {
+  .ai-waiting { padding: 16px; }
+  .ai-waiting-top { gap: 12px; flex-wrap: wrap; }
+  .ai-waiting-title { flex-basis: calc(100% - 60px); }
+  .ai-elapsed { margin-left: 60px; }
+  .ai-waiting-footer { align-items: flex-start; flex-direction: column; }
+}
+
+/* Comfortable reading sizes, with the answer ahead of configuration details. */
+.ai-explanation { border-color: var(--line); padding: 28px; font-size: 16px; }
+.ai-heading { gap: 12px; }
+.ai-heading h3 { font-size: 20px; line-height: 1.4; }
+.ai-label, .ai-provider { font-size: 14px; color: var(--muted); opacity: 1; }
+.ai-explanation p { line-height: 1.75; }
+.ai-explanation .ai-summary { font-size: 18px; line-height: 1.8; max-width: 68ch; margin: 12px 0 24px; }
+.ai-answer { margin-top: 24px; }
+.ai-answer-title { font-size: 22px; margin: 12px 0 0; letter-spacing: -.02em; }
+.ai-explanation .ai-findings { border: 1px solid var(--line); border-radius: 16px; margin: 12px 0; padding: 16px 20px; }
+.ai-findings > summary { font-size: 16px; font-weight: 550; line-height: 1.6; }
+.ai-findings > summary span { margin-left: 8px; font-size: 14px; color: var(--muted); }
+.ai-findings ul { list-style: none; padding: 0; margin: 16px 0 0; }
+.ai-findings li { padding: 0 0 16px; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
+.ai-findings li:last-child { margin: 0; padding: 0; border: 0; }
+.ai-findings li p { max-width: 68ch; font-size: 16px; }
+.ai-citations button { font-size: 14px; min-height: 36px; padding: 5px 12px; }
+.ai-setup { margin-top: 20px; border-top: 1px solid var(--line); padding-top: 18px; }
+.ai-setup > summary { font-size: 15px; color: var(--muted); }
+.ai-consent { font-size: 15px; gap: 12px; line-height: 1.7; }
+.ai-consent input { width: 18px; height: 18px; flex-shrink: 0; }
+.ai-explanation button { font-size: 15px; min-height: 42px; }
+.ai-explanation pre { font-size: 14px; line-height: 1.7; }
+.ai-evidence { border-color: var(--line); }
+.ai-evidence h4 { font-size: 17px; }
+.ai-waiting-title h4 { font-size: 20px; }
+.ai-waiting-title .ai-label, .ai-elapsed, .ai-waiting-connection, .ai-waiting-footer { font-size: 14px; }
+.ai-waiting .ai-waiting-message, .ai-waiting-evidence { font-size: 16px; }
+.ai-waiting-evidence li span { font-size: 14px; }
+@media (max-width: 760px) {
+  .ai-explanation { padding: 20px; }
+  .ai-explanation .ai-summary { font-size: 17px; }
+  .ai-explanation .ai-findings { padding: 14px; }
+}
+
+/* Vertical rhythm applies to prose as well as individual lines. */
+.ai-explanation p { margin: 18px 0; line-height: 1.9; }
+.ai-explanation .ai-summary { margin: 20px 0 30px; line-height: 1.95; }
+.ai-explanation .ai-provider { margin: 18px 0 26px; line-height: 1.9; }
+.ai-setup > summary { padding: 8px 0 14px; }
+.ai-explanation .ai-setup > .button { margin-top: 8px; }
+.ai-explanation .ai-consent { margin: 26px 0; line-height: 1.9; }
+.ai-explanation .ai-actions { margin-top: 20px; }
+.ai-findings li { padding-bottom: 24px; margin-bottom: 24px; }
+.ai-findings li p { margin: 16px 0; line-height: 1.9; }
+.ai-explanation .ai-saved-note { font-size: 14px; color: var(--muted); line-height: 1.8; margin: 14px 0 24px; }

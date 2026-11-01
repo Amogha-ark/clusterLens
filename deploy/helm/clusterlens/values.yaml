@@ -1,0 +1,19 @@
+image:
+  repository: clusterlens
+  tag: dev
+  pullPolicy: IfNotPresent
+clusterId: clusterlens-local
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+# AI is opt-in. Never put API keys in values; reference an existing Secret.
+ai:
+  provider: disabled
+  model: ""
+  ollamaUrl: "http://host.k3d.internal:11434"
+  existingSecret: ""
+  apiKeySecretKey: OPENAI_API_KEY
